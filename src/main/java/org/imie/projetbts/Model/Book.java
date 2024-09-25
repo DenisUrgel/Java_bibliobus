@@ -8,7 +8,7 @@ import javafx.beans.property.StringProperty;
 public class Book {
     public SimpleIntegerProperty id;
     public SimpleStringProperty title;
-    public SimpleStringProperty image;
+    public SimpleStringProperty imagePath;
     public SimpleIntegerProperty author_id;
     public int copiesAvailable;
     public SimpleStringProperty collectionName;
@@ -19,17 +19,13 @@ public class Book {
         this.id = new SimpleIntegerProperty(book_id);
         this.title = new SimpleStringProperty(title);
         this.author_id = new SimpleIntegerProperty(author_id);
-        this.image = new SimpleStringProperty(image);
+        this.imagePath = new SimpleStringProperty(image);
         this.collectionName = new SimpleStringProperty(collection);
 
     }
 
     public IntegerProperty Book_idProperty() {
         return id;
-    }
-
-    public void setBook_id(int book_id) {
-        this.id.set(book_id);
     }
 
     public String getTitle() {
@@ -43,12 +39,13 @@ public class Book {
         this.title.set(title);
     }
 
-    public StringProperty getImage() {
-        return image;
+    public String getImagePath() {
+        return getClass().getResource("/image/" + imagePath.get() + ".jpg").toExternalForm();
+
     }
 
     public void setImage(String image) {
-        this.image.set(image);
+        this.imagePath.set(image);
     }
 
     public IntegerProperty getAuthor_id() {

@@ -1,9 +1,12 @@
 package org.imie.projetbts;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.imie.projetbts.Model.Book;
 import org.imie.projetbts.Model.ManageBook;
@@ -17,7 +20,7 @@ public class AccueilController {
     public TableColumn<Book, String> colTitre;
     public TableColumn<Book, Integer> colAuteur;
     public TableColumn<Book, String> colCollection;
-    public TableColumn<Book, String> colCouverture;
+    public TableColumn<Book, ImageView> colCouverture;
 
     public TextField txtTitre;
     public TextField txtCouverture;
@@ -38,7 +41,16 @@ public class AccueilController {
             colTitre.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
             colAuteur.setCellValueFactory(cellData -> cellData.getValue().getAuthor_id().asObject());
             colCollection.setCellValueFactory(cellData -> cellData.getValue().getCollectionName());
-            colCouverture.setCellValueFactory(cellData -> cellData.getValue().getImage());
+            colCouverture.setCellValueFactory(cellData -> {
+                String imagePath = cellData.getValue().getImagePath();
+                Image image = new Image(imagePath);
+                ImageView imageView = new ImageView(image);
+
+                imageView.setFitHeight(300);
+                imageView.setFitWidth(300);
+
+                return new SimpleObjectProperty<>(imageView);
+            });
             tablLivre.setItems(manageBook.getBookList());
         } catch (SQLException e) {
             throw new RuntimeException(e);

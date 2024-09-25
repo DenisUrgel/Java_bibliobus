@@ -6,12 +6,12 @@
 
 <BorderPane prefHeight="497.0" prefWidth="855.0" style="-fx-background-color: #319B8F;" stylesheets="@MyBootstrap.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.imie.projetbts.AccueilController">
    <center>
-      <TableView fx:id="tablLivre" prefHeight="318.0" prefWidth="538.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tablLivre" editable="true" prefHeight="318.0" prefWidth="538.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="colTitre" prefWidth="75.0" text="Titre" />
-            <TableColumn fx:id="colAuteur" prefWidth="75.0" text="Auteur" />
-            <TableColumn fx:id="colCollection" prefWidth="75.0" text="Collection" />
+          <TableColumn fx:id="colId" maxWidth="1000.0" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="colTitre" maxWidth="3000.0" prefWidth="75.0" text="Titre" />
+            <TableColumn fx:id="colAuteur" maxWidth="3000.0" prefWidth="75.0" text="Auteur" />
+            <TableColumn fx:id="colCollection" maxWidth="3000.0" prefWidth="75.0" text="Collection" />
             <TableColumn fx:id="colCouverture" prefWidth="75.0" text="Couverture" />
         </columns>
          <columnResizePolicy>
@@ -50,7 +50,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label text="Couverture" />
+                  <Label text="Nom de l'image" />
                   <TextField fx:id="txtCouverture">
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -87,7 +87,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="96.0" prefWidth="177.0">
                <children>
-                  <Button fx:id="btnAddBook" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddBook" style="-fx-background-color: #0047FF; -fx-border-color: #0047FF;" styleClass="btn-danger" text="Ajouter/Modifier livre">
+                  <Button fx:id="btnAddBook" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddBook" style="-fx-background-color: #0047FF; -fx-border-color: #0047FF;" styleClass="btn-danger" text="Ajouter livre">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>

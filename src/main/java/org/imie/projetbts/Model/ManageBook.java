@@ -24,8 +24,7 @@ public class ManageBook {
                     rs.getString("title"),
                     rs.getString("image"),
                     rs.getInt("auteur_id"),
-                    collection.getCollection(result.getInt("collection_id")).getName()
-
+                    collection.getCollectionById(result.getInt("collection_id")).getName()
             );
 
             bookList.add(book);

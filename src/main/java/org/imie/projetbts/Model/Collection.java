@@ -6,14 +6,28 @@ import javafx.beans.property.SimpleStringProperty;
 public class Collection {
     public SimpleIntegerProperty collection_id;
     public SimpleIntegerProperty publicher_id;
+    public SimpleStringProperty publicherName;
     public SimpleStringProperty name;
     public String createdAt;
     public String updatedAt;
 
-    public Collection(int id, String name, int publicher_id) {
-        this.collection_id = new SimpleIntegerProperty(id);
+    public Collection(String name, int publicher_id, String publisherName) {
+        this.collection_id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty(name);
         this.publicher_id = new SimpleIntegerProperty(publicher_id);
+        this.publicherName = new SimpleStringProperty(publisherName);
+    }
+
+    public String getPublicherName() {
+        return publicherName.get();
+    }
+
+    public SimpleStringProperty publicherNameProperty() {
+        return publicherName;
+    }
+
+    public void setPublicherName(String publicherName) {
+        this.publicherName.set(publicherName);
     }
 
     public SimpleIntegerProperty getCollection_id() {
@@ -28,8 +42,8 @@ public class Collection {
         this.collection_id.set(collection_id);
     }
 
-    public SimpleIntegerProperty getPublicher_id() {
-        return publicher_id;
+    public int getPublicher_id() {
+        return publicher_id.get();
     }
 
     public void setPublicher_id(int publicher_id) {
