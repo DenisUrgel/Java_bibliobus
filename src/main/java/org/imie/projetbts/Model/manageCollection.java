@@ -112,4 +112,17 @@ public class manageCollection {
         }
 
     }
+
+    public void updateCollection(String newName, int newPublisher_id, int id) throws SQLException {
+        Connection conn = BDconnection.getConnection();
+        String sql = "UPDATE collection SET name = ?, publisher_id = ? WHERE id = ?";
+        assert conn != null;
+        PreparedStatement statement = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1, newName);
+        statement.setInt(2, newPublisher_id);
+        statement.setInt(3, id);
+        System.out.println(newPublisher_id);
+        statement.executeUpdate();
+        System.out.println("Record updated.");
+    }
 }

@@ -30,8 +30,8 @@ public class Collection {
         this.publicherName.set(publicherName);
     }
 
-    public SimpleIntegerProperty getCollection_id() {
-        return collection_id;
+    public int getCollection_id() {
+        return collection_id.get();
     }
 
     public SimpleIntegerProperty collection_idProperty() {

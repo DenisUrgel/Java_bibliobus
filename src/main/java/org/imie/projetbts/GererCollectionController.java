@@ -27,6 +27,16 @@ public class GererCollectionController {
     public ChoiceBox<String> menuEditeur;
     public TextField txtCollection;
 
+    public void onAddEditeur(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(BiblioBusApplication.class.getResource("Editeur.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 392, 264);
+        stage.setTitle("Editeur");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     public void initialize() throws SQLException {
         manageCollection manageCollection = new manageCollection();
         managePublisher managePublisher = new managePublisher();
@@ -35,12 +45,11 @@ public class GererCollectionController {
         colEditeurCollection.setCellValueFactory(cellData -> cellData.getValue().publicherNameProperty());
         tablCollection.setItems(manageCollection.getCollectionList());
 
+        menuEditeur.getItems().clear();
         ObservableList<Publisher> publisherlist = managePublisher.getPublisherList();
         for (Publisher publisher : publisherlist) {
             menuEditeur.getItems().add(publisher.getName());
         }
-
-
     }
 
     public void onAddCollection(ActionEvent actionEvent) throws SQLException {
@@ -49,21 +58,13 @@ public class GererCollectionController {
             managePublisher mngP = new managePublisher();
             String selectedItem = menuEditeur.getSelectionModel().getSelectedItem();
             Publisher selectedPublisher = mngP.getPublisherByName(selectedItem);
+
             Collection collection = new Collection(txtCollection.getText(), selectedPublisher.getPublisher_id(), selectedPublisher.getName());
             mngC.createCollection(collection);
         } else {
             System.out.println("already existing Collection");
         }
         initialize();
-    }
-
-    public void onAddEditeur(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(BiblioBusApplication.class.getResource("Editeur.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 392, 264);
-        stage.setTitle("Editeur");
-        stage.setScene(scene);
-        stage.show();
     }
 
     public void onDelCollection(ActionEvent actionEvent) throws SQLException {
@@ -77,5 +78,19 @@ public class GererCollectionController {
             Collection selectedCollection = tablCollection.getSelectionModel().getSelectedItem();
             this.txtCollection.setText(selectedCollection.getName());
         }
+    }
+
+    public void onCollectionNameChanged(ActionEvent actionEvent) throws SQLException {
+        if(tablCollection.getSelectionModel().getSelectedItems() != null){
+            manageCollection mng = new manageCollection();
+            managePublisher mngP = new managePublisher();
+
+            String selectedItem = menuEditeur.getSelectionModel().getSelectedItem();
+            Publisher selectedPublisher = mngP.getPublisherByName(selectedItem);
+
+            tablCollection.getSelectionModel().getSelectedItem().setName(txtCollection.getText());
+            mng.updateCollection(txtCollection.getText(), selectedPublisher.getPublisher_id(), tablCollection.getSelectionModel().getSelectedItem().getCollection_id());
+        }
+        initialize();
     }
 }

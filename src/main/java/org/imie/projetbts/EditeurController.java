@@ -30,13 +30,13 @@ public class EditeurController {
 
     public void onAddEditeur(ActionEvent actionEvent) throws SQLException {
         managePublisher mng = new managePublisher();
-        if (mng.getPublisherByName(txtNomEditeur.getText()) == null){
+        if (mng.getPublisherByName(txtNomEditeur.getText()) != null){
+
             Publisher publisher = new Publisher(txtNomEditeur.getText());
             mng.createPublisher(publisher);
         } else {
             System.out.println("Publisher already existing");
         }
-
         initialize();
     }
 
@@ -50,7 +50,6 @@ public class EditeurController {
         if(tablPublisher.getSelectionModel().getSelectedItems() != null){
             Publisher selectedPublisher = tablPublisher.getSelectionModel().getSelectedItem();
             this.txtNomEditeur.setText(selectedPublisher.getName());
-            System.out.println(selectedPublisher.getPublisher_id());
         }
     }
 
@@ -59,7 +58,7 @@ public class EditeurController {
             tablPublisher.getSelectionModel().getSelectedItem().setName(txtNomEditeur.getText());
             managePublisher mng = new managePublisher();
             mng.updatePublisher(txtNomEditeur.getText(),tablPublisher.getSelectionModel().getSelectedItem().getPublisher_id());
-
         }
+        initialize();
     }
 }

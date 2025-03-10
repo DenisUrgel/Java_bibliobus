@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.geometry.*?>
-        <?import javafx.scene.control.*?>
-        <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<VBox alignment="CENTER" prefHeight="294.0" prefWidth="282.0" style="-fx-background-color: #319B8F;" stylesheets="@MyBootstrap.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.imie.projetbts.LoginController">
+<VBox alignment="CENTER" fillWidth="false" prefHeight="294.0" prefWidth="282.0" style="-fx-background-color: #319B8F;" stylesheets="@MyBootstrap.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.imie.projetbts.LoginController">
 <children>
   <Label alignment="CENTER" contentDisplay="RIGHT" styleClass="h3" text="Connection" />
   <VBox>
     <children>
       <Label text="Identifiant" />
-      <TextField fx:id="idTxt" />
+      <TextField fx:id="idTxt" onAction="#onLoginBtn" />
     </children>
     <VBox.margin>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -20,7 +19,7 @@
   <VBox>
     <children>
       <Label text="Mot de passe" />
-      <TextField fx:id="passwordTxt" />
+      <TextField fx:id="passwordTxt" onAction="#onLoginBtn" />
     </children>
     <VBox.margin>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

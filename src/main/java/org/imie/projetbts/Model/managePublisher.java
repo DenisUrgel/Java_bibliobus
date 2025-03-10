@@ -22,6 +22,7 @@ public class managePublisher {
 
         return publisherList;
     }
+
     public Publisher getPublisherByName(String name){
         Publisher publisher = null;
         try {

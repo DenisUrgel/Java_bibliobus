@@ -9,8 +9,8 @@ public class Auteur {
     public String createdAt;
     public String updatedAt;
 
-    public Auteur(int id, String name) {
-        this.auteur_id = new SimpleIntegerProperty(id);
+    public Auteur(String name) {
+        this.auteur_id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty(name);
     }
 

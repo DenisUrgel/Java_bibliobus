@@ -5,23 +5,73 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.Objects;
+
 public class Book {
     public SimpleIntegerProperty id;
     public SimpleStringProperty title;
     public SimpleStringProperty imagePath;
     public SimpleIntegerProperty author_id;
+    public SimpleStringProperty summary;
+    public SimpleStringProperty categorie;
     public int copiesAvailable;
     public SimpleStringProperty collectionName;
     public String createdAt;
     public String updatedAt;
 
-    public Book(int book_id, String title, String image, int author_id, String collection) {
-        this.id = new SimpleIntegerProperty(book_id);
+    public Book(String title, String categorie, String image, String summary, int author_id, String collectionName) {
+        this.id = new SimpleIntegerProperty();
         this.title = new SimpleStringProperty(title);
+        this.categorie = new SimpleStringProperty(categorie);
+        this.summary = new SimpleStringProperty(summary);
         this.author_id = new SimpleIntegerProperty(author_id);
         this.imagePath = new SimpleStringProperty(image);
-        this.collectionName = new SimpleStringProperty(collection);
+        this.collectionName = new SimpleStringProperty(collectionName);
 
+    }
+
+    public String getCategorie() {
+        return categorie.get();
+    }
+
+    public SimpleStringProperty categorieProperty() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie.set(categorie);
+    }
+
+    public String getSummary() {
+        return summary.get();
+    }
+
+    public SimpleStringProperty summaryProperty() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary.set(summary);
+    }
+
+    public int getCopiesAvailable() {
+        return copiesAvailable;
+    }
+
+    public void setCopiesAvailable(int copiesAvailable) {
+        this.copiesAvailable = copiesAvailable;
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public SimpleIntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public IntegerProperty Book_idProperty() {
@@ -40,7 +90,7 @@ public class Book {
     }
 
     public String getImagePath() {
-        return getClass().getResource("/image/" + imagePath.get() + ".jpg").toExternalForm();
+        return imagePath.get();
 
     }
 
@@ -48,16 +98,25 @@ public class Book {
         this.imagePath.set(image);
     }
 
-    public IntegerProperty getAuthor_id() {
+    public int getAuthor_id() {
+        return author_id.get();
+    }
+
+    public IntegerProperty author_idIntproperty() {
         return author_id;
     }
+
 
     public void setAuthor_id(int author_id) {
         this.author_id.set(author_id);
     }
 
-    public StringProperty getCollectionName() {
+    public StringProperty CollectionNameProperty() {
         return collectionName;
+    }
+
+    public String getCollectionName() {
+        return collectionName.get();
     }
 
     public void setCollectionName(String collectionName) {

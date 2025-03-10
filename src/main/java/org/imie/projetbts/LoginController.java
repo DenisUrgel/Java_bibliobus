@@ -16,14 +16,16 @@ public class LoginController {
     public Button loginBtn;
 
     public void onLoginBtn(ActionEvent actionEvent) throws IOException {
-        if (passwordTxt.getText()== "" && idTxt.getText() == ""){
+        if (passwordTxt.getText().isEmpty() && idTxt.getText().isEmpty()){
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(BiblioBusApplication.class.getResource("Accueil.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1087, 636);
             stage.setTitle("Accueil");
             stage.setScene(scene);
             stage.show();
-        }
 
+            Stage currentStage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+        }
     }
 }

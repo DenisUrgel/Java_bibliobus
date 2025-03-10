@@ -8,4 +8,5 @@ module org.imie.projetbts {
 
     opens org.imie.projetbts to javafx.fxml;
     exports org.imie.projetbts;
+exports org.imie.projetbts.Model;
 }
