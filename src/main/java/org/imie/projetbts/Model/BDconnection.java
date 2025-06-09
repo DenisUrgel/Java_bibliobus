@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BDconnection {
-    static final String DB_URL = "jdbc:mysql://localhost/bibliobus?useSSL=false";
+    static final String DB_URL = "jdbc:mysql://localhost/php_bibliobus?useSSL=false";
     static final String USER = "root";
     static final String PASS = "";
 

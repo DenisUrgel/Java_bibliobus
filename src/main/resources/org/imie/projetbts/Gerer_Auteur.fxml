@@ -4,8 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane prefHeight="298.0" prefWidth="424.0" style="-fx-background-color: #319B8F;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.imie.projetbts.GererAuteurController">
+<BorderPane prefHeight="298.0" prefWidth="424.0" style="-fx-background-color: #319B8F;" stylesheets="@MyBootstrap.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.imie.projetbts.GererAuteurController">
    <center>
       <TableView fx:id="tablAuteur" onMousePressed="#onAuteurPressed" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>

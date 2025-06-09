@@ -11,7 +11,7 @@ public class manageCollection {
         Connection conn = BDconnection.getConnection();
         assert conn != null;
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from collection");
+        ResultSet rs = stmt.executeQuery("select * from collections");
         String sql = "SELECT * FROM publisher WHERE id = ?";
         managePublisher publisher = new managePublisher();
         PreparedStatement statement = conn.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class manageCollection {
         Collection collection =null;
         try {
             Connection conn = BDconnection.getConnection();
-            String sql = "SELECT * FROM collection WHERE id = ?";
+            String sql = "SELECT * FROM collections WHERE id = ?";
             assert conn != null;
             PreparedStatement statement = conn.prepareStatement(sql);
             managePublisher publisher = new managePublisher();
@@ -61,7 +61,7 @@ public class manageCollection {
         Collection collection =null;
         try {
             Connection conn = BDconnection.getConnection();
-            String sql = "SELECT * FROM collection WHERE name = ?";
+            String sql = "SELECT * FROM collections WHERE name = ?";
             assert conn != null;
             PreparedStatement statement = conn.prepareStatement(sql);
             managePublisher publisher = new managePublisher();
@@ -86,7 +86,7 @@ public class manageCollection {
     public void createCollection(Collection c){
         try {
             Connection conn = BDconnection.getConnection();
-            String sql = "INSERT INTO collection (name, publisher_id) VALUES (?,?)";
+            String sql = "INSERT INTO collections (name, publisher_id) VALUES (?,?)";
             assert conn != null;
             PreparedStatement statement = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, c.getName());
@@ -101,7 +101,7 @@ public class manageCollection {
     public void deleteCollection(String name){
         try {
             Connection conn = BDconnection.getConnection();
-            String sql = "DELETE FROM collection WHERE name = ?";
+            String sql = "DELETE FROM collections WHERE name = ?";
             assert conn != null;
             PreparedStatement statement = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, name);
@@ -115,7 +115,7 @@ public class manageCollection {
 
     public void updateCollection(String newName, int newPublisher_id, int id) throws SQLException {
         Connection conn = BDconnection.getConnection();
-        String sql = "UPDATE collection SET name = ?, publisher_id = ? WHERE id = ?";
+        String sql = "UPDATE collections SET name = ?, publisher_id = ? WHERE id = ?";
         assert conn != null;
         PreparedStatement statement = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, newName);

@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane style="-fx-background-color: #319B8F;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.imie.projetbts.EditeurController">
    <center>
       <TableView fx:id="tablPublisher" onMousePressed="#onEditeurPressed" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -21,7 +20,7 @@
       </TableView>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="62.0" prefWidth="394.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="62.0" prefWidth="394.0" stylesheets="@MyBootstrap.css" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="112.0">
                <children>
@@ -34,7 +33,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="60.0" prefWidth="135.0">
                <children>
-                  <Button fx:id="btnDelEditeur" mnemonicParsing="false" onAction="#onDelEditeur" style="-fx-background-color: #0047FF; -fx-border-color: #0047FF;" styleClass="btn-danger" text="Supprimer éditeur">
+                  <Button fx:id="btnDelEditeur" mnemonicParsing="false" onAction="#onDelEditeur" style="-fx-background-color: #0047FF; -fx-border-color: #0047FF;" styleClass="btn-danger" stylesheets="@MyBootstrap.css" text="Supprimer éditeur">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>
